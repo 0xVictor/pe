@@ -1,37 +1,25 @@
-import { globalStyles } from '@/styles/Global'
-import type { AppProps } from 'next/app'
+import { globalStyles } from '@/styles/Global';
+import type { AppProps } from 'next/app';
+import { SessionProvider as AuthProvider } from 'next-auth/react';
 
-import logoImg from "@/assets/pic.jpg"
-import { Container, Content, Header, BackButton, Pic, NoteTitle } from '@/styles/pages/app'
-import Image from 'next/image';
-import { IoIosArrowBack } from 'react-icons/io'
+import '@blocknote/core/style.css';
 
-import "@blocknote/core/style.css";
-
+import { NextUIProvider } from '@nextui-org/react';
+import Layout from '@/components/Layout';
 
 globalStyles();
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppProps) {
   return (
-
-    <Container>
-      <Header>
-        <BackButton>
-          <IoIosArrowBack />
-        </BackButton>
-        <NoteTitle>
-          Personal notes
-        </NoteTitle>
-        <Pic>
-          <Image src={logoImg} alt='logo' />
-        </Pic>
-
-      </Header>
-
-      <Content>
-
-        <Component {...pageProps} />
-      </Content>
-    </Container >
-  )
+    <NextUIProvider>
+      <AuthProvider session={session}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </AuthProvider>
+    </NextUIProvider>
+  );
 }

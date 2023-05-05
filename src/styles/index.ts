@@ -1,6 +1,15 @@
-import { createStitches } from "@stitches/react";
+import { createStitches } from '@stitches/react';
 
-export const { config, styled, css, globalCss, keyframes, getCssText, theme, createTheme } = createStitches({
+export const {
+  config,
+  styled,
+  css,
+  globalCss,
+  keyframes,
+  getCssText,
+  theme,
+  createTheme,
+} = createStitches({
   theme: {
     colors: {
       white: '#fff',
@@ -19,12 +28,19 @@ export const { config, styled, css, globalCss, keyframes, getCssText, theme, cre
       green500: '#00875f',
       green300: '#00b37e',
 
-      textColor: '#444',
-    }
+      textColor: '#1F2225',
+
+      boxShadow: '#e1e1e67a',
+      sideMenu: '#F9F9F9',
+      border: 'rgba(31, 34, 37, 0.06)',
+
+      grayMenu: 'rgba(31, 34, 37, 0.06)',
+      hover: '#E2E8E9',
+    },
   },
   media: {
     bp1: '(max-width: 640px)',
     bp2: '(max-width: 768px)',
     bp3: '(max-width: 1024px)',
   },
-})
+});

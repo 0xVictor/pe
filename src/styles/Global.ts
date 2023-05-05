@@ -1,10 +1,10 @@
-import { globalCss } from "@stitches/react";
-
+import { globalCss } from '@stitches/react';
 
 export const globalStyles = globalCss({
   '*': {
     margin: 0,
     padding: 0,
+    fontFamily: 'Inter !important',
   },
 
   body: {
@@ -18,16 +18,20 @@ export const globalStyles = globalCss({
     fontWeight: 500,
   },
 
-  'a': {
-    textDecoration: 'none'
+  a: {
+    textDecoration: 'none',
   },
 
-  'button': {
+  button: {
     border: 'none',
-    cursor: 'pointer'
+    cursor: 'pointer',
   },
 
-  'code': {
-    background: '$gray100'
-  }
-})
+  code: {
+    background: '$gray100',
+  },
+
+  ul: {
+    margin: 0,
+  },
+});

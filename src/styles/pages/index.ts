@@ -1,5 +1,12 @@
 import { styled } from "..";
 
+export const Container = styled('div', {
+  display: 'grid',
+  width: '100%',
+  gap: 40,
+  position: 'relative'
+})
+
 export const Content = styled('div', {
   display: 'grid',
   width: '100%',

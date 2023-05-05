@@ -7,6 +7,9 @@ const nextConfig = {
     // your project has type errors.
     // !! WARN !!
     ignoreBuildErrors: true,
+  }, 
+  images: {
+    domains: ['jeztdqneychcszojmlyh.supabase.co', 'i.pravatar.cc'],
   },
 }
 
