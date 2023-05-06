@@ -1,4 +1,5 @@
 import { styled } from '@stitches/react';
+import ContentEditable from 'react-contenteditable';
 
 export const Container = styled('div', {
   maxWidth: 800,
@@ -38,6 +39,77 @@ export const Social = styled('div', {
 
   '&:hover': {
     background: '#f1f1f1',
+  },
+});
+
+export const EditableBlockContainer = styled(ContentEditable, {
+  margin: '0.25rem 0',
+  padding: '0.5rem',
+  background: '#fafafa',
+  borderRadius: '0.25rem',
+
+  '&:hover': {
+    background: '#f8f8f8',
+    outlineColor: '#f5f6fb',
+  },
+
+  '&:focus': {
+    background: '#f5f6fb',
+  },
+});
+
+export const SelectSlashMenu = styled('div', {
+  position: 'absolute',
+  width: '6.875rem',
+  height: '9rem',
+  zIndex: 11,
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'flex-end',
+
+  '& .Items': {
+    background: '#fafafa',
+    boxShadow:
+      'rgba(15, 15, 15, 0.05) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 3px 6px, rgba(15, 15, 15, 0.2) 0px 9px 24px',
+    borderRadius: '0.5rem',
+  },
+
+  "& .Items div[role='button']": {
+    fontSize: '0.875rem',
+    fontWeight: 400,
+    padding: '0.5rem 1rem',
+    borderBottom: '1px solid #f5f6fb',
+  },
+
+  "& .Items div[role='button']:hover": {
+    background: '#f5f6fb',
+    cursor: 'pointer',
+  },
+
+  "& .Items div[role='button']:last-of-type": {
+    borderBottom: 'none',
+  },
+
+  "& .Items div[role='button']:hover, & .Items div[role='button']:focus": {
+    background: '#f5f6fb',
+    cursor: 'pointer',
+  },
+
+  "& .Items div[role='button']:first-of-type:hover, & .Items div[role='button']:first-of-type:focus":
+    {
+      borderTopRightRadius: '0.5rem',
+      borderTopLeftRadius: '0.5rem',
+    },
+
+  "& .Items div[role='button']:last-of-type:hover, & .Items div[role='button']:last-of-type:focus":
+    {
+      borderBottomRightRadius: '0.5rem',
+      borderBottomLeftRadius: '0.5rem',
+    },
+
+  '& .Selected': {
+    background: '#f5f6fb',
+    borderRadius: '0.5rem',
   },
 });
 

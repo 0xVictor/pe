@@ -35,12 +35,25 @@ import Gapcursor from '@tiptap/extension-gapcursor';
 import Commands from '@/components/Extensions/SlashMenu/Commands';
 import getSuggestionItems from '@/components/Extensions/SlashMenu/Items';
 import renderItems from '@/components/Extensions/SlashMenu/RenderItems';
-import Drop from './Extensions/Draggable/Draggable';
+import DraggableNodeExtension from './Extensions/Draggable/Draggable';
 
 lowlight.registerLanguage('html', html);
 lowlight.registerLanguage('css', css);
 lowlight.registerLanguage('js', js);
 lowlight.registerLanguage('ts', ts);
+
+import { NodeViewWrapper } from '@tiptap/react';
+
+const DraggableParagraph = ({ node }) => {
+  return (
+    <NodeViewWrapper>
+      <div className="draggable-handle" style={{ cursor: 'grab' }}>
+        &#x2630;
+      </div>
+      <p>{node.textContent}</p>
+    </NodeViewWrapper>
+  );
+};
 
 const Editor: React.FC = () => {
   const [selectedElementPosition, setSelectedElementPosition] = useState({
@@ -60,7 +73,10 @@ const Editor: React.FC = () => {
       Paragraph,
       HardBreak,
       Gapcursor,
-      Drop,
+      DraggableNodeExtension.configure({
+        nodeTypes: ['paragraph'], // Set the node types that should be draggable
+      }),
+      ,
       Placeholder.configure({
         // Use a placeholder:
         placeholder: 'Type "/" to see commands',
@@ -109,6 +125,7 @@ const Editor: React.FC = () => {
 
   useEffect(() => {
     setIsLoaded(true);
+    editor.registerReactComponent('paragraph', DraggableParagraph);
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
